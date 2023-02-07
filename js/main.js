@@ -3,14 +3,6 @@ const taskInput = document.querySelector("#taskInput");
 const tasksList = document.querySelector("#tasksList");
 const emptyList = document.querySelector("#emptyList");
 
-// if (localStorage.getItem("tasksHTML")) {
-//   tasksList.innerHTML = localStorage.getItem("tasksHTML");
-// }
-
-// const saveHTMLtoLs = (e) => {
-//   localStorage.setItem("tasksHTML", tasksList.innerHTML);
-// };
-
 let tasks = [];
 
 const renderTask = (task) => {
@@ -78,12 +70,6 @@ const addTask = (e) => {
   taskInput.value = "";
   taskInput.focus();
 
-  //   if (tasksList.children.length > 1) {
-  //     emptyList.classList.add("none");
-  //   }
-
-  //   saveHTMLtoLs();
-
   checkEmptyList();
 };
 
@@ -94,23 +80,11 @@ const deleteTask = (e) => {
 
   const id = Number(parent.id);
 
-  //   const index = tasks.findIndex((task) => {
-  //     return task.id === id;
-  //   });
-
-  //   tasks.splice(index, 1);
-
   tasks = tasks.filter((task) => task.id !== id);
 
   saveToLocalStorage();
 
   parent.remove();
-
-  //   if (tasksList.children.length === 1) {
-  //     emptyList.classList.remove("none");
-  //   }
-
-  //   saveHTMLtoLs();
 
   checkEmptyList();
 };
@@ -130,8 +104,6 @@ const doneTask = (e) => {
 
   const taskTitle = parent.querySelector(".task-title");
   taskTitle.classList.toggle("task-title--done");
-
-  //   saveHTMLtoLs();
 };
 
 checkEmptyList();
